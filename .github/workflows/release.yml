@@ -1,0 +1,44 @@
+name: Build & Release DMG
+
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: macos-15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build PulseBar (Release)
+        run: |
+          xcodebuild -project PulseBar.xcodeproj \
+            -scheme PulseBar \
+            -configuration Release \
+            -derivedDataPath .build \
+            CODE_SIGN_IDENTITY="-" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            clean build
+
+      - name: Create DMG Installer
+        run: |
+          mkdir -p .build/dmg-staging
+          cp -R .build/Build/Products/Release/PulseBar.app .build/dmg-staging/
+          ln -s /Applications .build/dmg-staging/Applications
+          hdiutil create -volname "PulseBar" \
+            -srcfolder .build/dmg-staging \
+            -ov -format UDZO \
+            PulseBar.dmg
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: PulseBar.dmg
+          generate_release_notes: true
