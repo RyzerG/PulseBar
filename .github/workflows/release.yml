@@ -1,4 +1,4 @@
-name: Build & Release DMG
+name: Generate Installer and Release
 
 permissions:
   contents: write

@@ -1,4 +1,4 @@
-name: Build Validation
+name: Validate Build
 
 permissions:
   contents: read
