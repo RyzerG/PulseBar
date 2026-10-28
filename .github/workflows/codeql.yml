@@ -1,4 +1,4 @@
-name: Validate Xcode project
+name: Build Validation
 
 permissions:
   contents: read
