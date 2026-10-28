@@ -61,4 +61,19 @@ fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
 
-/PulseBar.xcodeproj/
+# Xcode User Data & Local Workspace Settings
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# Mac OS System Files
+.DS_Store
+
+# Xcode Build DerivedData & Intermediates
+build/
+DerivedData/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata/
