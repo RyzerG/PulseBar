@@ -7,7 +7,7 @@
 [![macOS](https://img.shields.io/badge/macOS-14.0%2B-000000?style=for-the-badge&logo=apple&logoColor=white)](https://www.apple.com/macos/)
 [![Swift](https://img.shields.io/badge/Swift-5.0-F05138?style=for-the-badge&logo=swift&logoColor=white)](https://swift.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg?style=for-the-badge)](LICENSE)
-[!][Build Status](https://img.shields.io/badge/build-passed-brightgreen?style=for-the-badge)(https://github.com/RyzerG/PulseBar/)
+[![BuildStatus](https://img.shields.io/badge/build-passed-brightgreen?style=for-the-badge)](https://github.com/RyzerG/PulseBar/)
 
 ![PulseBar Screenshot](assets/preview.png)
 </div>
