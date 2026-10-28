@@ -22,6 +22,7 @@ final class SystemMonitor: ObservableObject {
     @Published var memoryUsedGB: Double = 0.0
     @Published var memoryTotalGB: Double = 0.0
     @Published var gpuLoad: Double = 0.0
+    @Published var cpuName: String = "Apple Silicon"
     
     // Battery States
     @Published var batteryLevel: Double = 100.0
@@ -67,6 +68,7 @@ final class SystemMonitor: ObservableObject {
         self.statSlot1 = StatType(rawValue: savedSlot1) ?? .cpu
         self.statSlot2 = StatType(rawValue: savedSlot2) ?? .memory
         self.refreshInterval = savedInterval > 0 ? savedInterval : 2.5
+        self.cpuName = SystemMonitor.readCPUName()
         
         if UserDefaults.standard.object(forKey: "pinNetworkToMenuBar") == nil {
             self.pinNetworkToMenuBar = true // Show stacked Mbps in menu bar by default
@@ -183,6 +185,15 @@ final class SystemMonitor: ObservableObject {
         }
     }
 
+    private static func readCPUName() -> String {
+        var size: Int = 0
+        sysctlbyname("machdep.cpu.brand_string", nil, &size, nil, 0)
+        var buffer = [CChar](repeating: 0, count: size)
+        sysctlbyname("machdep.cpu.brand_string", &buffer, &size, nil, 0)
+        let brand = String(cString: buffer).trimmingCharacters(in: .whitespacesAndNewlines)
+        return brand.isEmpty ? "Apple Processor" : brand
+    }
+    
     // MARK: - 1. CPU Load
     private func readCPULoad() -> Double {
         var numCPUsU: natural_t = 0

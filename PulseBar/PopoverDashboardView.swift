@@ -71,7 +71,7 @@ struct PopoverDashboardView: View {
                 VStack(spacing: 10) {
                     DetailedMetricRow(
                         title: "CPU Usage",
-                        subtitle: "Mach Kernel",
+                        subtitle: monitor.cpuName,
                         icon: "cpu",
                         percentage: monitor.cpuLoad,
                         isBattery: false
