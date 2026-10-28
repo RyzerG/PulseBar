@@ -62,22 +62,13 @@ PulseBar avoids `Process` / CLI wrappers entirely and queries hardware metrics s
 
 ## 🚀 Installation & Building
 
-### Build from Source (Xcode)
-
-1. **Clone the repository:**
+### Download Pre-Built `.dmg` (No Xcode Required)
+1. Download the latest **`PulseBar.dmg`** from the [Releases](https://github.com/RyzerG/PulseBar/releases) page.
+2. Open `PulseBar.dmg` and drag **PulseBar** into your **Applications** folder.
+3. Because PulseBar is free and open-source (not notarized with a paid Apple Developer ID), clear the macOS quarantine flag before first launch:
    ```bash
-   git clone [https://github.com/RyzerG/PulseBar.git](https://github.com/RyzerG/PulseBar.git)
-   cd PulseBar
+   xattr -cr /Applications/PulseBar.app
    ```
-
-2. **Open the project in Xcode:**
-   ```bash
-   open PulseBar.xcodeproj
-   ```
-
-3. **Build and Run:**
-   * Select the **`PulseBar`** scheme and set the destination to **My Mac**.
-   * Press **`Cmd + R`** to compile and launch. PulseBar will appear immediately in your top-right macOS menu bar.
 
 ### Export as a Standalone App
 
